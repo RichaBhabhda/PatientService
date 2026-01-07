@@ -25,11 +25,17 @@ public class PatientController {
     }
 
     @PostMapping
-    public Patient bookAppointement(@RequestBody Patient patient)
+    public boolean bookAppointement(@RequestBody Patient patient)
     {
-        String id=UUID.randomUUID().toString();
-        patient.setPatientId(id);
-        return patientRepository.save(patient);
+        try
+        {
+            String id=UUID.randomUUID().toString();
+            patient.setPatientId(id);
+            patientRepository.save(patient);
+            return true;
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @GetMapping
