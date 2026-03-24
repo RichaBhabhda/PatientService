@@ -57,8 +57,4 @@ public class PatientController {
         patientRepository.deleteById(id);
         return "Successfully deleted patient with id : "+id;
     }
-
-
-
-
 }
